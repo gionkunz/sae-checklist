@@ -7,5 +7,6 @@ import { ChecklistService } from './checklist.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  checklist = this.checklistService.getChecklist();
   constructor(public checklistService: ChecklistService) {}
 }

@@ -1,9 +1,4 @@
-<div style="text-align: center;">
-  <h1>Welcome to checklist!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-  />
-</div>
-<div>Message From Server: {{ checklistService.hello$ | async | json }}</div>
-<div>Server Version: {{ (checklistService.version$ | async).version }}</div>
+<h1>Checklist</h1>
+<ul>
+  <li *ngFor="let item of checklist | async">{{ item.title }}</li>
+</ul>

@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { Message } from '@checklist/api-interfaces';
+import { ChecklistItem } from '@checklist/api-interfaces';
 
 import { AppService } from './app.service';
 
@@ -8,13 +8,8 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
-  }
-
-  @Get('version')
-  getVersion(): any {
-    return { version: '1.0.0' };
+  @Get('checklist')
+  getChecklist(): readonly ChecklistItem[] {
+    return this.appService.getChecklist();
   }
 }
