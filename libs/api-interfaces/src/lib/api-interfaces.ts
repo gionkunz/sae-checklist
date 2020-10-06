@@ -3,3 +3,7 @@ export interface ChecklistItem {
   readonly title: string;
   readonly done: boolean;
 }
+
+export interface AddChecklistItem {
+  readonly title: string;
+}

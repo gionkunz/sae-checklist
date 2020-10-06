@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 
-import { ChecklistItem } from '@checklist/api-interfaces';
+import { ChecklistItem, AddChecklistItem } from '@checklist/api-interfaces';
 
 import { AppService } from './app.service';
 
@@ -11,5 +11,15 @@ export class AppController {
   @Get('checklist')
   getChecklist(): readonly ChecklistItem[] {
     return this.appService.getChecklist();
+  }
+
+  @Post('checklist')
+  addChecklistItem(@Body() addChecklistItem: AddChecklistItem) {
+    this.appService.addChecklistItem(addChecklistItem.title);
+  }
+
+  @Delete('checklist/:id')
+  deleteChecklistItem(@Param('id') id) {
+    this.appService.deleteChecklistItem(id);
   }
 }

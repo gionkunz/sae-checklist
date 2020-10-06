@@ -1,4 +1,33 @@
-<h1>Checklist</h1>
-<ul>
-  <li *ngFor="let item of checklist | async">{{ item.title }}</li>
-</ul>
+<mat-toolbar>
+  <button mat-icon-button aria-label="Checklist menu button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>SAE Checklist</span>
+</mat-toolbar>
+
+<div class="add-area">
+  <div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Please add your checklist items</mat-card-title>
+      </mat-card-header>
+      <mat-form-field appearance="standard" class="add-item-title">
+        <mat-label>Checklist item title</mat-label>
+        <input #title matInput placeholder="Go for a walk with my dog...">
+      </mat-form-field>
+      <button mat-fab color="accent" (click)="addChecklistItem(title)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+</div>
+
+<main class="container">
+  <mat-card class="checklist-item"
+            *ngFor="let item of checklist | async; trackBy: trackById">
+    <span class="item-title">{{ item.title }}</span>
+    <button mat-button color="primary" (click)="deleteChecklistItem(item.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card>
+</main>
